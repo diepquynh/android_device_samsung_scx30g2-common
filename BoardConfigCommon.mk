@@ -20,3 +20,6 @@ BOARD_RIL_CLASS += ../../../device/samsung/scx30g2-common/ril
 
 # System properties
 TARGET_SYSTEM_PROP += device/samsung/scx30g2-common/system.prop
+
+# Hardware-specific
+SOC_SCX30G_V2 := true
