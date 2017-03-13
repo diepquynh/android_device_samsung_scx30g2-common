@@ -36,7 +36,6 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
-	wpa_supplicant_ss.conf \
 	wpa_supplicant_overlay.conf \
 	p2p_supplicant_overlay.conf \
 	nvram_net.txt
