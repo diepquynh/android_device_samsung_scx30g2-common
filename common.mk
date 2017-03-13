@@ -40,3 +40,7 @@ PRODUCT_PACKAGES += \
 	wpa_supplicant_overlay.conf \
 	p2p_supplicant_overlay.conf \
 	nvram_net.txt
+
+# Rootdir
+PRODUCT_PACKAGES += \
+	fstab.sc8830
