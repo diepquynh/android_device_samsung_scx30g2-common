@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+LOCAL_PATH := $(call my-dir)
+
 # Inherit from scx35-common device configuration
 $(call inherit-product, device/samsung/scx35-common/common.mk)
 
@@ -22,6 +24,7 @@ $(call inherit-product-if-exists, vendor/samsung/scx30g2-common/scx30g2-common-v
 PRODUCT_PACKAGES += \
 	audio_hw.xml \
 	audio_para \
+	audio_effects_vendor.conf \
 	audio_policy.conf \
 	codec_pga.xml \
 	tiny_hw.xml
