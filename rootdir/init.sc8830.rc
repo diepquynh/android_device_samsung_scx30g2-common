@@ -16,12 +16,6 @@ on early-init
     chmod 777 /sys/class/input/event0/device/device/enable
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
-# radio pipe
-    mkdir /dev/rpipe 0550 radio radio
-    exec -- /system/bin/mknod -m 666 /dev/rpipe/ril.vt.0 p
-    exec -- /system/bin/mknod -m 666 /dev/rpipe/ril.vt.1 p
-    exec -- /system/bin/mknod -m 666 /dev/rpipe/ril.vt.2 p
-
 on init
     mkdir /productinfo 0771 system system
     symlink /dev/block/platform/sdio_emmc/by-name/PERSISTENT /dev/block/persistent
@@ -40,7 +34,7 @@ on init
     chown radio system /sys/class/sec/sec-thermistor/temperature
     chown radio system /sys/class/sec/sec-thermistor/dcxo_temp_adc
     chown radio system /sys/class/sec/sec-thermistor/dcxo_temperature
-	
+
     chown radio system /sys/class/thermal/thermal_zone1/temp
 
 # SecEDS
@@ -426,10 +420,6 @@ on boot
     chmod 0750 /persdata/absolute
 
 # Broadcom GPS
-    chown system system /dev/ttyS3
-    chmod 0660 /dev/ttyS3
-    chown system system /sys/class/sec/gps/GPS_PWR_EN/value
-    chmod 0664 /sys/class/sec/gps/GPS_PWR_EN/value
     mkdir /data/system 0771 system system
     chown system system /data/system
     mkdir /data/system/gps 0771 system system
