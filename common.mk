@@ -39,7 +39,10 @@ PRODUCT_PACKAGES += \
 	init.sc8830.usb.rc \
 	ueventd.sc8830.rc
 
-
 # RIL
 PRODUCT_PACKAGES += \
 	rild.rc
+
+# Interactive governor configs
+PRODUCT_PACKAGES += \
+	interactive_gov.rc
