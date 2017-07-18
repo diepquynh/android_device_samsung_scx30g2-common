@@ -40,10 +40,6 @@ on init
 # SecEDS
     setprop ro.SecEDS.enable false
 
-# @}
-    chown system system /sys/class/power_supply/battery/hw_switch_point
-    chown system system /sys/class/power_supply/battery/save_capacity
-
 on fs
     mount_all /fstab.sc8830
     mount pstore pstore /sys/fs/pstore
@@ -98,20 +94,6 @@ on post-fs-data
     write /sys/kernel/debug/tracing/events/power/enable 1
     write /sys/kernel/debug/tracing/events/timer/enable 1
     write /sys/kernel/debug/tracing/events/cpufreq_interactive/cpufreq_interactive_setspeed/enable 1
-
-#start watchdog daemon
-service watchdogd /system/bin/watchdogd
-    class core
-    user root
-    group root
-    oneshot
-    
-# This will make sure that sdcard service starts as late_start.
-on nonencrypted
-    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
-
-on property:vold.decrypt=trigger_restart_framework
-    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -230,61 +212,61 @@ on boot
     chown system radio /sys/class/sensors/sensor_dev/flush
 
 #audio pin mux
-    chown system system proc/pin_switch/bt_iis_sys_sel/cp0_iis2
-    chown system system proc/pin_switch/bt_iis_sys_sel/cp0_iis3
-    chown system system proc/pin_switch/bt_iis_sys_sel/cp0_iis0
-    chown system system proc/pin_switch/bt_iis_sys_sel/cp0_iis1
-    chown system system proc/pin_switch/bt_iis_sys_sel/cp1_iis1
-    chown system system proc/pin_switch/bt_iis_sys_sel/cp1_iis2
-    chown system system proc/pin_switch/bt_iis_sys_sel/cp1_iis0
-    chown system system proc/pin_switch/bt_iis_sys_sel/cp1_iis3
-    chown system system proc/pin_switch/bt_iis_sys_sel/ap_iis3
-    chown system system proc/pin_switch/bt_iis_sys_sel/ap_iis2
-    chown system system proc/pin_switch/bt_iis_sys_sel/ap_iis1
-    chown system system proc/pin_switch/bt_iis_sys_sel/ap_iis0
-    chown system system proc/pin_switch/bt_iis_sys_sel/vbc_iis
-    chown system system proc/pin_switch/iis01_loop_sel
-    chown system system proc/pin_switch/iis23_loop_sel
-    chown system system proc/pin_switch/iis12_loop_sel
-    chown system system proc/pin_switch/iis02_loop_sel
-    chown system system proc/pin_switch/iis03_loop_sel
-    chown system system proc/pin_switch/iis13_loop_sel
-    chown system system proc/pin_switch/iis1_sys_sel/ap_iis1
-    chown system system proc/pin_switch/iis0_sys_sel/ap_iis0
-    chown system system proc/pin_switch/iis0_sys_sel/cp0_iis0
-    chown system system proc/pin_switch/iis0_sys_sel/cp1_iis0
-    chown system system proc/pin_switch/iis0_sys_sel/cp2_iis0
-    chown system system proc/pin_switch/iis1_sys_sel/cp2_iis1
-    chown system system proc/pin_switch/iis1_sys_sel/cp0_iis1
-    chown system system proc/pin_switch/iis1_sys_sel/cp1_iis1
+    chown system system /proc/pin_switch/bt_iis_sys_sel/cp0_iis2
+    chown system system /proc/pin_switch/bt_iis_sys_sel/cp0_iis3
+    chown system system /proc/pin_switch/bt_iis_sys_sel/cp0_iis0
+    chown system system /proc/pin_switch/bt_iis_sys_sel/cp0_iis1
+    chown system system /proc/pin_switch/bt_iis_sys_sel/cp1_iis1
+    chown system system /proc/pin_switch/bt_iis_sys_sel/cp1_iis2
+    chown system system /proc/pin_switch/bt_iis_sys_sel/cp1_iis0
+    chown system system /proc/pin_switch/bt_iis_sys_sel/cp1_iis3
+    chown system system /proc/pin_switch/bt_iis_sys_sel/ap_iis3
+    chown system system /proc/pin_switch/bt_iis_sys_sel/ap_iis2
+    chown system system /proc/pin_switch/bt_iis_sys_sel/ap_iis1
+    chown system system /proc/pin_switch/bt_iis_sys_sel/ap_iis0
+    chown system system /proc/pin_switch/bt_iis_sys_sel/vbc_iis
+    chown system system /proc/pin_switch/iis01_loop_sel
+    chown system system /proc/pin_switch/iis23_loop_sel
+    chown system system /proc/pin_switch/iis12_loop_sel
+    chown system system /proc/pin_switch/iis02_loop_sel
+    chown system system /proc/pin_switch/iis03_loop_sel
+    chown system system /proc/pin_switch/iis13_loop_sel
+    chown system system /proc/pin_switch/iis1_sys_sel/ap_iis1
+    chown system system /proc/pin_switch/iis0_sys_sel/ap_iis0
+    chown system system /proc/pin_switch/iis0_sys_sel/cp0_iis0
+    chown system system /proc/pin_switch/iis0_sys_sel/cp1_iis0
+    chown system system /proc/pin_switch/iis0_sys_sel/cp2_iis0
+    chown system system /proc/pin_switch/iis1_sys_sel/cp2_iis1
+    chown system system /proc/pin_switch/iis1_sys_sel/cp0_iis1
+    chown system system /proc/pin_switch/iis1_sys_sel/cp1_iis1
 
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/cp0_iis2
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/cp0_iis3
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/cp0_iis0
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/cp0_iis1
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/cp1_iis1
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/cp1_iis2
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/cp1_iis0
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/cp1_iis3
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/ap_iis3
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/ap_iis2
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/ap_iis1
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/ap_iis0
-    chmod 0664 proc/pin_switch/bt_iis_sys_sel/vbc_iis
-    chmod 0664 proc/pin_switch/iis01_loop_sel
-    chmod 0664 proc/pin_switch/iis23_loop_sel
-    chmod 0664 proc/pin_switch/iis12_loop_sel
-    chmod 0664 proc/pin_switch/iis02_loop_sel
-    chmod 0664 proc/pin_switch/iis03_loop_sel
-    chmod 0664 proc/pin_switch/iis13_loop_sel
-    chmod 0664 proc/pin_switch/iis1_sys_sel/ap_iis1
-    chmod 0664 proc/pin_switch/iis0_sys_sel/ap_iis0
-    chmod 0664 proc/pin_switch/iis0_sys_sel/cp0_iis0
-    chmod 0664 proc/pin_switch/iis0_sys_sel/cp1_iis0
-    chmod 0664 proc/pin_switch/iis0_sys_sel/cp2_iis0
-    chmod 0664 proc/pin_switch/iis1_sys_sel/cp2_iis1
-    chmod 0664 proc/pin_switch/iis1_sys_sel/cp0_iis1
-    chmod 0664 proc/pin_switch/iis1_sys_sel/cp1_iis1
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/cp0_iis2
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/cp0_iis3
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/cp0_iis0
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/cp0_iis1
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/cp1_iis1
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/cp1_iis2
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/cp1_iis0
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/cp1_iis3
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/ap_iis3
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/ap_iis2
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/ap_iis1
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/ap_iis0
+    chmod 0664 /proc/pin_switch/bt_iis_sys_sel/vbc_iis
+    chmod 0664 /proc/pin_switch/iis01_loop_sel
+    chmod 0664 /proc/pin_switch/iis23_loop_sel
+    chmod 0664 /proc/pin_switch/iis12_loop_sel
+    chmod 0664 /proc/pin_switch/iis02_loop_sel
+    chmod 0664 /proc/pin_switch/iis03_loop_sel
+    chmod 0664 /proc/pin_switch/iis13_loop_sel
+    chmod 0664 /proc/pin_switch/iis1_sys_sel/ap_iis1
+    chmod 0664 /proc/pin_switch/iis0_sys_sel/ap_iis0
+    chmod 0664 /proc/pin_switch/iis0_sys_sel/cp0_iis0
+    chmod 0664 /proc/pin_switch/iis0_sys_sel/cp1_iis0
+    chmod 0664 /proc/pin_switch/iis0_sys_sel/cp2_iis0
+    chmod 0664 /proc/pin_switch/iis1_sys_sel/cp2_iis1
+    chmod 0664 /proc/pin_switch/iis1_sys_sel/cp0_iis1
+    chmod 0664 /proc/pin_switch/iis1_sys_sel/cp1_iis1
 
     chown system system /dev/ttyGS0
     chmod 0770 /dev/snd/controlC0
@@ -444,8 +426,8 @@ on boot
    chmod 0660 /sys/class/rfkill/rfkill0/state
    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-   chmod 0660 proc/bluetooth/sleep/btwrite
-   chown bluetooth system proc/bluetooth/sleep/btwrite
+   chmod 0660 /proc/bluetooth/sleep/btwrite
+   chown bluetooth system /proc/bluetooth/sleep/btwrite
 
 #LCD
     chown system system /sys/class/backlight/panel/brightness
@@ -467,77 +449,26 @@ on boot
     chown system system /sys/devices/platform/panel/backlight/panel/brightness
     write /proc/sys/vm/dirty_writeback_centisecs 1000
 
-service drm /system/bin/drmserver
-    class main
-    user drm
-    group system drm inet drmrpc sdcard_r sdcard_rw media_rw radio shell
-
 on charger
     start console
-    start slog
-
-service poweroffalarm /system/bin/poweroff_alarm
-    disabled
-    oneshot
 
 on alarm
     class_start core
     start drm
     start media
     start console
-    start slog
-    start poweroffalarm
-
-on property:ro.modem.t.count=1
-    write /proc/sim/0 t
-
-on property:ro.modem.t.count=2
-    write /proc/sim/0 t
-    write /proc/sim/1 t
-
-on property:ro.modem.t.count=3
-    write /proc/sim/0 t
-    write /proc/sim/1 t
-    write /proc/sim/2 t
-
-on property:ro.modem.w.count=1
-    write /proc/sim/0 w
-
-on property:ro.modem.w.count=2
-    write /proc/sim/0 w
-    write /proc/sim/1 w
-
-on property:ro.modem.w.count=3
-    write /proc/sim/0 w
-    write /proc/sim/1 w
-    write /proc/sim/2 w
 
 on property:ro.config.ksm.support=true
     write /sys/kernel/mm/ksm/pages_to_scan 100
     write /sys/kernel/mm/ksm/sleep_millisecs 500
     write /sys/kernel/mm/ksm/run   1
 
-service batterysrv /bin/batterysrv
-    class core
-    user system
-    group system
-    oneshot
-
-on property:persist.modem.w.enable=1
     symlink /dev/spipe_w1 /dev/vbpipe1
     symlink /dev/spipe_w2 /dev/vbpipe2
     symlink /dev/spipe_w3 /dev/vbpipe3
     symlink /dev/spipe_w6 /dev/vbpipe6
     start refnotify_w
     start nvitemd_w
-
-on property:persist.modem.t.enable=1
-    start refnotify_td
-    start nvitemd_td
-
-on property:persist.modem.l.enable=1
-    start refnotify_l
-    start nvitemd_l
 
     chmod 0666 /proc/pin_switch/iis0_sys_sel/cp0_iis0
     chmod 0666 /proc/pin_switch/iis0_sys_sel/cp1_iis0
@@ -548,17 +479,11 @@ on property:persist.modem.l.enable=1
     chmod 0666 /proc/pin_switch/bt_iis_sys_sel/cp2_iis0
     chmod 0666 /proc/pin_switch/bt_iis_sys_sel/ap_iis0
 
-service bugreport /system/bin/dumpstate -d -p -B \
-    -o /data/data/com.android.shell/files/bugreports/bugreport
-    class late_start
-    disabled
-    oneshot
-
 # umount service
 service umount_service /system/bin/umount /preload
     disabled
     oneshot
-    
+
 on property:persist.sys.storage_preload=1
     mount ext4 /dev/block/platform/sdio_emmc/by-name/HIDDEN /preload nosuid nodev noatime wait ro
     setprop storage.preload.complete 1
