@@ -12,11 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+LOCAL_PATH := device/samsung/scx30g2-common
+
 # Inherit from scx35-common device configuration
 $(call inherit-product, device/samsung/scx35-common/common.mk)
 
 # Inherit scx30g2-common vendor tree
 $(call inherit-product-if-exists, vendor/samsung/scx30g2-common/scx30g2-common-vendor.mk)
+
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Bluetooth
 PRODUCT_PACKAGES += \

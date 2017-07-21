@@ -11,7 +11,7 @@ on early-init
     # coredump file will not be generated in release version
     write /proc/sys/kernel/core_pattern /dev/null
 
-	chown system system /sys/devices/platform/panel/backlight/panel/brightness
+    chown system system /sys/devices/platform/panel/backlight/panel/brightness
     chown system system /sys/class/input/event0/device/device/enable
     chmod 777 /sys/class/input/event0/device/device/enable
     mount debugfs /sys/kernel/debug /sys/kernel/debug
@@ -307,6 +307,10 @@ on boot
 
 # for tsp command
     chown system system /sys/class/sec/tsp/cmd
+
+# Doubletap2wake
+    chown system system /sys/android_touch/doubletap2wake
+    chmod 660 /sys/android_touch/doubletap2wake
 
 # phone
     setprop ro.telephony.call_ring.multiple 0
