@@ -144,6 +144,7 @@ on early-boot
 
     chown system root /sys/class/rtcc/rtcc_trigger
 on boot
+    chmod 0644 /proc/cmdline
     chown system system /sys/module/mali/parameters/gpu_freq_cur
     chown system system /sys/module/mali/parameters/gpu_freq_max_limit
     chown system system /sys/module/mali/parameters/gpu_freq_min_limit
