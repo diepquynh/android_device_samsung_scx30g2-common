@@ -50,3 +50,8 @@ PRODUCT_PACKAGES += \
 # Interactive governor configs
 PRODUCT_PACKAGES += \
 	interactive_gov.rc
+
+# Media
+PRODUCT_PACKAGES += \
+	media_codecs.xml \
+	media_codecs_performance.xml
