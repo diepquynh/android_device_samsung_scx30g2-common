@@ -51,6 +51,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	interactive_gov.rc
 
+# SDcardfs
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.sys.sdcardfs=true
+
 # Media
 PRODUCT_PACKAGES += \
 	media_codecs.xml \
