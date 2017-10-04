@@ -31,8 +31,3 @@ TARGET_RECOVERY_FSTAB := device/samsung/scx30g2-common/rootdir/fstab.sc8830
 
 # Hardware-specific
 SOC_SCX30G_V2 := true
-
-# CMHW
-BOARD_HARDWARE_CLASS := \
-	device/samsung/scx30g2-common/cmhw
-TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
