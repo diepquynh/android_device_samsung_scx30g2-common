@@ -19,8 +19,6 @@
 BOARD_RIL_CLASS += ../../../device/samsung/scx30g2-common/ril
 
 # Graphics
-TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-TARGET_FORCE_SCREENSHOT_CPU_PATH := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # System properties
