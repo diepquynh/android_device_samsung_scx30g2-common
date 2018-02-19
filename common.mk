@@ -18,20 +18,6 @@ $(call inherit-product, device/samsung/scx35-common/common.mk)
 # Inherit scx30g2-common vendor tree
 $(call inherit-product-if-exists, vendor/samsung/scx30g2-common/scx30g2-common-vendor.mk)
 
-# Bluetooth
-PRODUCT_PACKAGES += \
-	bt_vendor.conf
-
-# GPS
-PRODUCT_PACKAGES += \
-	gps.xml
-
-# WiFi
-PRODUCT_PACKAGES += \
-	wpa_supplicant_overlay.conf \
-	p2p_supplicant_overlay.conf \
-	nvram_net.txt
-
 # Rootdir
 PRODUCT_PACKAGES += \
 	fstab.sc8830 \
@@ -46,8 +32,3 @@ PRODUCT_PACKAGES += \
 # Interactive governor configs
 PRODUCT_PACKAGES += \
 	interactive_gov.rc
-
-# Media
-PRODUCT_PACKAGES += \
-	media_codecs.xml \
-	media_codecs_performance.xml
