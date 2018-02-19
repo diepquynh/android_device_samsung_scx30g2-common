@@ -1,11 +1,19 @@
 on boot
 #Interactive governor parameters tuning for better power and performance
-    write /sys/devices/system/cpu/cpufreq/intelliactive/above_hispeed_delay "25000 960000:50000"
-    write /sys/devices/system/cpu/cpufreq/intelliactive/go_hispeed_load 98
-    write /sys/devices/system/cpu/cpufreq/intelliactive/hispeed_freq 800000
+    write /sys/devices/system/cpu/cpufreq/intelliactive/above_hispeed_delay "25000 1036800:50000"
+    write /sys/devices/system/cpu/cpufreq/intelliactive/go_hispeed_load 99
+    write /sys/devices/system/cpu/cpufreq/intelliactive/hispeed_freq 1036800
     write /sys/devices/system/cpu/cpufreq/intelliactive/io_is_busy 0
     write /sys/devices/system/cpu/cpufreq/intelliactive/min_sample_time 40000
-    write /sys/devices/system/cpu/cpufreq/intelliactive/target_loads "85 960000:95 1190400:97"
+    write /sys/devices/system/cpu/cpufreq/intelliactive/target_loads "85 1190400:95 1300000:97"
     write /sys/devices/system/cpu/cpufreq/intelliactive/timer_rate 40000
     write /sys/devices/system/cpu/cpufreq/intelliactive/timer_slack 40000
 
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "25000 1000000:50000"
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 99
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1036800
+    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 0
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1000000:95 1200000:97"
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 40000
