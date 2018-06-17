@@ -23,8 +23,8 @@ PRODUCT_PACKAGES += \
 	fstab.sc8830
 
 # RIL
-PRODUCT_PACKAGES += \
-	rild.rc
+PRODUCT_COPY_FILES += \
+	device/samsung/scx30g2-common/system/etc/init/rild.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.rc
 
 # Interactive governor configs
 PRODUCT_PACKAGES += \
