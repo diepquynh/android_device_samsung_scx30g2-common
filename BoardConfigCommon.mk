@@ -15,9 +15,6 @@
 # Inherit from SCX35 common configs
 -include device/samsung/scx35-common/BoardConfigCommon.mk
 
-# RIL
-BOARD_RIL_CLASS += ../../../device/samsung/scx30g2-common/ril
-
 # Graphics
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 TARGET_FORCE_SCREENSHOT_CPU_PATH := true
