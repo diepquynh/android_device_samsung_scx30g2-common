@@ -20,10 +20,7 @@ $(call inherit-product-if-exists, vendor/samsung/scx30g2-common/scx30g2-common-v
 
 # Rootdir
 PRODUCT_PACKAGES += \
-	fstab.sc8830 \
-	init.sc8830.rc \
-	init.sc8830.usb.rc \
-	ueventd.sc8830.rc
+	fstab.sc8830
 
 # RIL
 PRODUCT_PACKAGES += \
