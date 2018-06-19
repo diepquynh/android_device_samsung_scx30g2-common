@@ -32,3 +32,7 @@ SOC_SCX30G_V2 := true
 # RIL
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/scx30g2-common/include
 SIM_COUNT := 2
+
+# RIL shim
+TARGET_LD_SHIM_LIBS += \
+	/system/vendor/lib/libreference-ril_sp.so|libril_shim.so
