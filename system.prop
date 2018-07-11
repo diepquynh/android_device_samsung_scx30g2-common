@@ -12,8 +12,6 @@ persist.sys.engpc.disable=0
 persist.sys.storage_preload=1
 
 # RIL
-rild.libpath=/system/vendor/lib/libreference-ril_sp.so
-
 persist.modem.w.enable=1
 persist.modem.w.nvp=w
 ro.modem.w.dev=/proc/cpw/

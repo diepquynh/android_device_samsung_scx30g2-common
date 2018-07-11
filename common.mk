@@ -22,10 +22,6 @@ $(call inherit-product-if-exists, vendor/samsung/scx30g2-common/scx30g2-common-v
 PRODUCT_PACKAGES += \
 	fstab.sc8830
 
-# RIL
-PRODUCT_COPY_FILES += \
-	device/samsung/scx30g2-common/system/etc/init/rild.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.rc
-
 # Interactive governor configs
 PRODUCT_PACKAGES += \
 	interactive_gov.rc
